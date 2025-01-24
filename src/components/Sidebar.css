@@ -1,0 +1,97 @@
+.sidebar {
+  width: 212px;
+  background: white;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #ddd;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.sidebar-logo {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.sidebar-section p {
+  font-size: 14px;
+  color: #888;
+}
+
+.sidebar ul {
+  margin: 0;
+  padding-left: 0; 
+  font-size: 14px;
+}
+
+.sidebar .favorites {
+  list-style: disc; 
+  padding-left: 20px; 
+  margin-top: -8px;
+}
+
+.sidebar .favorites li::marker {
+  color: #888; 
+}
+.sidebar li {
+  padding: 8px 0;
+}
+.sidebar ul.dashboards li {
+  display: flex; 
+  align-items: center;
+  padding: 8px 0;
+  margin-top: -8px;
+}
+.sidebar ul.dashboards li::before {
+  content: ">"; 
+  width:16px;
+  height:16px;
+  color: #888;
+}
+.arrow {
+  width:16px;
+  height:16px;
+  color: #888;
+}
+.down-arrow {
+  transform: rotate(90deg);
+}
+.sidebar li.active {
+  list-style: none;
+  display: flex;
+  align-items: center;
+
+}
+
+.sidebar ul:not(.favorites) {
+  list-style: none; 
+  
+}
+.user{
+  display: flex;
+  align-items: center;
+}
+.list-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+.sidebar ul .nested-list {
+  padding-left: 46px;
+  margin-top: 5px;
+}
+.favorites-recently {
+  display: flex;
+  justify-content: flex-start;
+  gap: 27px; 
+  margin-top: -10px;
+  
+}
+.sidebar .users{
+margin: -8px;
+}

@@ -1,0 +1,133 @@
+.main-content {
+    flex: 3;
+    padding: 5px;
+    background: #fff;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr) 2fr;
+    gap: 20px;
+    margin: 20px;
+    align-items: start;
+}
+
+.card {
+    padding: 24px;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 16px;
+    text-align: center;
+    font-size: 16px;
+    color: #333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card span {
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+.projections-chart {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+    background: #f9fafb;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.projections-chart h4 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 16px;
+}
+
+.projections-title {
+    text-align: left;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.charts {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 20px;
+    margin: 20px;
+}
+
+.chart {
+    background: #f4f4f4;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.tables {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 20px;
+    margin: 20px;
+}
+
+.table {
+    background: #f4f4f4;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.table-header {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr;
+    color: rgba(28, 28, 28, 0.4);
+    border-bottom: 1px solid rgba(28, 28, 28, 0.4);
+    padding: 10px 0;
+}
+
+.table-header div {
+    padding: 0 10px; 
+    text-align: left;
+}
+
+.table-row {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr; 
+    padding: 10px 0;
+    align-items: center;
+}
+
+.table-row div {
+    text-align: left; 
+    padding: 0 10px; 
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.table-row .name {
+    padding-right: 30px;
+}
+
+
+
+.revenue-info {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.revenue-item {
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.revenue-item strong {
+    margin-right: 5px;
+}
