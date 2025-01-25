@@ -1,0 +1,130 @@
+.main-content {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.table-container {
+    padding: 15px;
+}
+
+.table-title {
+    font-family: 'Inter', sans-serif; 
+    font-size: 14px;
+    font-weight: 600; 
+    line-height: 20px; 
+    text-align: left; 
+    text-underline-position: from-font; 
+    text-decoration-skip-ink: none; 
+    margin-bottom: 20px;
+    margin-left: 22px;
+}
+
+
+.orders-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.orders-table th,
+.orders-table td {
+    padding: 12px;
+    border-bottom: 1px solid #e0e0e0;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.orders-table th {
+
+
+    color: rgba(28, 28, 28, 0.4)
+}
+
+.orders-table tr:hover {
+    background-color: #f4f4f4;
+}
+
+
+.status-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.status-in-progress {
+    color: rgba(138, 140, 217, 1);  /* Blueish color */
+}
+
+.status-in-progress .status-dot {
+    background-color: rgba(138, 140, 217, 1); /* Dot will match the text color */
+}
+
+.status-complete {
+    color: rgba(74, 167, 133, 1);  /* Greenish color */
+}
+
+.status-complete .status-dot {
+    background-color: rgba(74, 167, 133, 1); /* Dot will match the text color */
+}
+
+.status-pending {
+    color: rgba(89, 168, 212, 1);  /* Light blue color */
+}
+
+.status-pending .status-dot {
+    background-color: rgba(89, 168, 212, 1); /* Dot will match the text color */
+}
+
+.status-approved {
+    color: rgba(255, 197, 85, 1);  /* Yellowish color */
+}
+
+.status-approved .status-dot {
+    background-color: rgba(255, 197, 85, 1); /* Dot will match the text color */
+}
+
+.status-rejected {
+    color: rgba(28, 28, 28, 0.4);  /* Grey color */
+}
+
+.status-rejected .status-dot {
+    background-color: rgba(28, 28, 28, 0.4); /* Dot will match the text color */
+}
+
+
+.orders-table th input[type="checkbox"],
+.orders-table td input[type="checkbox"] {
+    vertical-align: middle;
+    margin: 0;
+    transform: scale(1.1);
+
+}
+
+.orders-table th:first-child,
+.orders-table td:first-child {
+    text-align: center;
+    width: 40px;
+}
+
+.user-cell {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.user-image {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    opacity: 1;
+    object-fit: cover;
+}
+
+.calender-image {
+    width: 16px;
+    height: 16px;
+}
