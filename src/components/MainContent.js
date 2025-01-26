@@ -115,8 +115,6 @@ const CustomLegend = ({ payload }) => {
 
 const MainContent = () => {
 
-    const maxRevenue = Math.max(...revenueData.map(data => data.revenue));
-
     return (
         <div className="main-content">
             <Header />

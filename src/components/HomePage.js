@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "./Header";
 import Notifications from "./Notifications";
 import MainContent from "./MainContent";
 
