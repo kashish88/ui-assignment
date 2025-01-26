@@ -1,9 +1,7 @@
 import React from "react";
 import "./MainContent.css";
-
 import Header from "./Header";
 import { ComposableMap, Geographies, Geography, Marker } from 'react-simple-maps';
-import { scaleLinear } from "d3-scale";
 import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
 import {
     LineChart,
@@ -11,9 +9,6 @@ import {
     XAxis,
     YAxis,
     CartesianGrid,
-    Tooltip as LineTooltip,
-    Legend as LineLegend,
-    ResponsiveContainer,
 } from "recharts";
 import StackedChart from './StackedChart';
 
@@ -118,20 +113,6 @@ const CustomLegend = ({ payload }) => {
     );
 };
 
-const CustomLineLegend = ({ payload }) => {
-    const formatCurrency = (value) => `$${value.toLocaleString()}`;
-
-    return (
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
-            {payload.map((entry, index) => (
-                <div key={index} style={{ marginBottom: '4px' }}>
-                    <span style={{ color: entry.color }}>{entry.value}</span>
-                    {" "}{formatCurrency(entry.value === "Current Week" ? 58211 : 68768)}
-                </div>
-            ))}
-        </div>
-    );
-};
 const MainContent = () => {
 
     const maxRevenue = Math.max(...revenueData.map(data => data.revenue));

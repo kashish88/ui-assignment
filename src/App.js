@@ -1,8 +1,6 @@
 import React from "react";
 import "./App.css";
 import Sidebar from "./components/Sidebar";
-import MainContent from "./components/MainContent";
-import Notifications from "./components/Notifications";
 import Home from "./components/HomePage";
 import Orders from "./components/OrdersPage";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
