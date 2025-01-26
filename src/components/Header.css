@@ -1,9 +1,7 @@
 .header {
-  
   left: 212px;
   padding: 20px 28px 20px 28px;
   justify-content: space-between;
-  background: #fff;
   border-bottom: 1px solid rgba(28, 28, 28, 0.1);
 }
 

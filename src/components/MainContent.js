@@ -17,31 +17,28 @@ import {
 } from "recharts";
 import StackedChart from './StackedChart';
 
-const data = [
-    { name: "Jan", Projections: 28, Actuals: 25 },
-    { name: "Feb", Projections: 30, Actuals: 27 },
-    { name: "Mar", Projections: 32, Actuals: 29 },
-    { name: "Apr", Projections: 35, Actuals: 33 },
-    { name: "May", Projections: 38, Actuals: 35 },
-    { name: "Jun", Projections: 40, Actuals: 37 },
-];
+
 
 const revenue_data = [
-    { name: "Jan", current_week_revenue: 5, previous_week_revenue: 3 },
-    { name: "Feb", current_week_revenue: 10, previous_week_revenue: 7 },
-    { name: "Mar", current_week_revenue: 15, previous_week_revenue: 12 },
-    { name: "Apr", current_week_revenue: 20, previous_week_revenue: 18 },
-    { name: "May", current_week_revenue: 25, previous_week_revenue: 22 },
-    { name: "Jun", current_week_revenue: 30, previous_week_revenue: 28 },
+    { name: "Jan", current_week_revenue: 5, previous_week_revenue: 10 },
+    { name: "Feb", current_week_revenue: 15, previous_week_revenue: 8 },
+    { name: "Mar", current_week_revenue: 10, previous_week_revenue: 15 },
+    { name: "Apr", current_week_revenue: 18, previous_week_revenue: 12 },
+    { name: "May", current_week_revenue: 14, previous_week_revenue: 20 },
+    { name: "Jun", current_week_revenue: 20, previous_week_revenue: 18 },
 ];
+
+
+
 
 
 const revenueData = [
-    { lat: 51.505, lng: -0.09, revenue: 5000, location: "London" },
-    { lat: 40.7128, lng: -74.006, revenue: 8000, location: "New York" },
-    { lat: 34.0522, lng: -118.2437, revenue: 3000, location: "Los Angeles" },
-    { lat: 48.8566, lng: 2.3522, revenue: 7000, location: "Paris" },
+    { lat: 40.7128, lng: -74.006, revenue: 72, location: "New York" },
+    { lat: 37.7749, lng: -122.4194, revenue: 39, location: "San Francisco" },
+    { lat: -33.8688, lng: 151.2093, revenue: 25, location: "Sydney" },
+    { lat: 1.3521, lng: 103.8198, revenue: 61, location: "Singapore" },
 ];
+
 const topSellingProducts = [
     { name: "ASOS Ridley High Waist", price: "$79.49", quantity: 82, amount: "$6,518.18" },
     { name: "Marco Lightweight Shirt", price: "$128.50", quantity: 37, amount: "$4,754.50" },
@@ -49,42 +46,95 @@ const topSellingProducts = [
     { name: "Lightweight Jacket", price: "$20.00", quantity: 184, amount: "$3,680.00" },
     { name: "Marco Shoes", price: "$79.49", quantity: 64, amount: "$1,965.81" },
 ];
+
 const totalSalesData = [
-    { name: "Direct", value: 38.6, revenue: 300.56 },
-    { name: "Affiliate", value: 30.56, revenue: 135.18 },
-    { name: "Sponsored", value: 15.42, revenue: 154.02 },
-    { name: "Email", value: 14.62, revenue: 48.96 }
+    { name: "Direct", value: 300.56 },
+    { name: "Affiliate", value: 135.18 },
+    { name: "Sponsored", value: 154.02 },
+    { name: "E-mail", value: 48.96 },
 ];
 
+const totalSalesColors = ["#000000", "#BAEDBD", "#95A4FC", "#B1E3FF"];
 
-const totalSalesColors = ["#007bff", "#28a745", "#ffc107", "#17a2b8"];
 
-const revenueScale = scaleLinear().domain([0, 75000]).range([5, 15]);
+const totalSales = 350.18;
 
+const CustomTooltip = ({ active, payload }) => {
+    if (active && payload && payload.length) {
+        const percent = ((payload[0].value / totalSales) * 100).toFixed(2);
+        return (
+            <div style={{
+                background: "black", color: 'white', border: "1px solid #ccc", padding: "4px 8px 4px 8px", borderRadius: '8px', width: "51px",
+                height: "46px"
+            }}>
+                <p>{` ${percent}%`}</p>
+            </div>
+        );
+    }
+    return null;
+};
 const CustomLegend = ({ payload }) => {
     return (
-        <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", marginTop: "10px" }}>
-            {payload.map((entry, index) => (
-                <div key={`legend-item-${index}`} style={{ display: "flex", alignItems: "center", margin: "0 10px" }}>
-                    <div
+        <ul
+            style={{
+                listStyleType: "none",
+                margin: "0",
+                padding: "0",
+                paddingLeft: "50px",
+            }}
+        >
+            {payload.map((entry, index) => {
+                const value = Number(entry.payload.value);
+                return (
+                    <li
+                        key={`item-${index}`}
                         style={{
-                            width: 10,
-                            height: 10,
-                            borderRadius: "50%",
-                            backgroundColor: entry.color,
-                            marginRight: 6,
+                            fontSize: "14px",
+                            marginBottom: "8px",
+                            display: "inline-flex",
+                            alignItems: "center",
+                            width: "100%",
+                            justifyContent: "flex-start",
                         }}
-                    ></div>
-                    <span>{entry.value}</span>
+                    >
+                        <span
+                            style={{
+                                display: "inline-block",
+                                width: "10px",
+                                height: "10px",
+                                borderRadius: "50%",
+                                backgroundColor: totalSalesColors[index],
+                                marginRight: "8px",
+                            }}
+                        ></span>
+                        <span>
+                            {entry.payload.name}:
+                        </span>
+                        <span style={{ paddingLeft: "8px" }}> ${value.toFixed(2)}</span>
+                    </li>
+                );
+            })}
+        </ul>
+    );
+};
+
+const CustomLineLegend = ({ payload }) => {
+    const formatCurrency = (value) => `$${value.toLocaleString()}`;
+
+    return (
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+            {payload.map((entry, index) => (
+                <div key={index} style={{ marginBottom: '4px' }}>
+                    <span style={{ color: entry.color }}>{entry.value}</span>
+                    {" "}{formatCurrency(entry.value === "Current Week" ? 58211 : 68768)}
                 </div>
             ))}
         </div>
     );
 };
-
 const MainContent = () => {
 
-    const revenueScale = scaleLinear().domain([0, 75000]).range([5, 15]);
+    const maxRevenue = Math.max(...revenueData.map(data => data.revenue));
 
     return (
         <div className="main-content">
@@ -139,26 +189,27 @@ const MainContent = () => {
                         Revenue
                     </div>
                     <div style={{ marginTop: '20px' }}>
-                        <LineChart width={530} height={250} data={revenue_data}>
-                            <CartesianGrid strokeDasharray="3 3" />
+                        <LineChart width={530} height={250} data={revenue_data} >
+                            <CartesianGrid strokeDasharray="3 3" vertical={false} />
                             <XAxis dataKey="name" />
                             <YAxis
                                 ticks={[10, 20, 30]}
                                 domain={[0, 30]}
+                                axisLine={false}
                             />
                             <Tooltip />
                             <Legend />
                             <Line
-                                type="monotone"
+                                type="basis"
                                 dataKey="current_week_revenue"
-                                stroke="#4bc0c0"
+                                stroke="rgba(28, 28, 28, 1)"
+                                strokeDasharray="5 5"
                                 activeDot={{ r: 8 }}
                             />
                             <Line
-                                type="monotone"
+                                type="basis"
                                 dataKey="previous_week_revenue"
-                                stroke="#c04b4b"
-                                strokeDasharray="5 5"
+                                stroke="#4bc0c0"
                             />
                         </LineChart>
                     </div>
@@ -168,7 +219,7 @@ const MainContent = () => {
                     <div className="projections-title">
                         Revenue by Location
                     </div>
-                    <div style={{ marginTop: '20px',width:'208px' }}>
+                    <div style={{ marginTop: '20px' }}>
                         <ComposableMap projection="geoMercator" width={800} height={500}>
                             <Geographies geography="https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json">
                                 {({ geographies }) => (
@@ -186,7 +237,27 @@ const MainContent = () => {
                             ))}
                         </ComposableMap>
                     </div>
+                    <ul className="location-revenue-list">
+                        {revenueData.map((data, index) => {
+                            const maxRevenue = Math.max(...revenueData.map(item => item.revenue)); 
+                            const progress = Math.min((data.revenue / maxRevenue) * 100, 100);
 
+                            return (
+                                <li key={index} className="location-revenue-item">
+                                    <div className="location-revenue-text">
+                                        <span>{data.location}</span>
+                                        <span>{data.revenue.toLocaleString()} K</span>
+                                    </div>
+                                    <div className="progress-bar-container">
+                                        <div
+                                            className="progress-bar"
+                                            style={{ width: `${progress}%`, backgroundColor: "rgba(168, 197, 218, 1)" }}
+                                        />
+                                    </div>
+                                </li>
+                            );
+                        })}
+                    </ul>
                 </div>
             </div>
             <div className="tables">
@@ -211,10 +282,11 @@ const MainContent = () => {
                     ))}
                 </div>
                 <div className="table total-sales-chart">
-                <div className="projections-title">
-                    Total Sales
+                    <div className="total-sales-title">
+                        Total Sales
                     </div>
-                    <PieChart width={220} height={220}>
+
+                    <PieChart width={300} height={300}>
                         <Pie
                             data={totalSalesData}
                             dataKey="value"
@@ -224,17 +296,15 @@ const MainContent = () => {
                             outerRadius={85}
                             innerRadius={55}
                             cornerRadius={20}
-                            paddingAngle={7}
+                            paddingAngle={5}
                             fill="#8884d8"
-
                         >
                             {totalSalesData.map((entry, index) => (
                                 <Cell key={`cell-${index}`} fill={totalSalesColors[index]} />
                             ))}
                         </Pie>
-                        <Tooltip />
+                        <Tooltip content={<CustomTooltip />} />
                         <Legend content={<CustomLegend />} />
-
                     </PieChart>
 
                 </div>

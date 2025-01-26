@@ -12,7 +12,7 @@ const StackedChart = () => {
     datasets: [
       {
         label: 'Projections',
-        data: [10000000, 25000000, 15000000, 10000000, 25000000, 15000000],
+        data: [10000000, 25000000, 15000000,  25000000,10000000, 15000000],
         backgroundColor: 'rgba(168, 197, 218, 1)',
         borderRadius: 10, 
  
@@ -20,7 +20,7 @@ const StackedChart = () => {
       },
       {
         label: 'Actuals',
-        data: [15000000, 20000000, 10000000, 15000000, 20000000, 10000000],
+        data: [15000000, 20000000, 10000000,  20000000,15000000, 10000000],
         backgroundColor: 'rgb(222, 237, 248)',
         borderRadius: 10, 
        

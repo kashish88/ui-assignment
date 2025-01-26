@@ -1,8 +1,9 @@
 import React from "react";
 import "./Header.css";
-
+import { useTheme } from "./ThemeContext";
 
 const Header = () => {
+  const { toggleTheme } = useTheme();
   return (
     <div className="header">
       <div className="breadcrumb">
@@ -27,7 +28,7 @@ const Header = () => {
           <img src="/Text.png" alt="Search" />
         </div>
         <div className="icons">
-          <span className="icon"> <img src="/Sun.png" alt="Logo" /></span>
+          <span className="icon" onClick={toggleTheme}> <img src="/Sun.png" alt="Logo" /></span>
           <span className="icon"><img src="/ClockCounterClockwise.png" alt="Logo" /></span>
           <span className="icon"><img src="/Bell.png" alt="Logo" /></span>
           <span className="icon"><img src="/Sidebar.png" alt="Logo" /></span>

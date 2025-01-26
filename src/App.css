@@ -12,46 +12,20 @@
   display: flex;
   flex: 1;
 }
-/* Default Light Theme */
-.app.light-theme {
-  background-color: #ffffff;
-  color: #000000;
+
+body.dark-mode {
+  background-color: #121212;
+  color: white;
 }
 
-.app.light-theme .sidebar {
-  background-color: #f1f1f1;
-  color: #000;
+.app.dark-mode {
+  background-color: #121212;
 }
 
-.app.light-theme .main-container {
-  background-color: #f9f9f9;
+.app.dark-mode .icon img {
+  filter: invert(1);
 }
 
-/* Dark Theme */
-.app.dark-theme {
-  background-color: #181818;
-  color: #ffffff;
-}
-
-.app.dark-theme .sidebar {
-  background-color: #333333;
-  color: #ffffff;
-}
-
-.app.dark-theme .main-container {
-  background-color: #1e1e1e;
-}
-
-.theme-toggle-btn {
-  margin: 10px;
-  padding: 10px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.theme-toggle-btn:hover {
-  background-color: #0056b3;
+.app .icon img {
+  filter: invert(0);
 }
