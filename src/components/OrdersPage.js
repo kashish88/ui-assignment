@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Orders.css";
 import Header from "./Header";
 
 const Orders = () => {
+    const [currentPage, setCurrentPage] = useState(1);
+
     const orders = [
         { id: "#CMP801", user: "Natali Craig", image: "Female15.png", project: "Landing Page", address: "Meadow Lane Oakland", date: "Just now", calender: "CalendarBlank.png", status: "In Progress" },
         { id: "#CMP802", user: "Kate Morrison", image: "Female09.png", project: "CRM Admin pages", address: "Larry San Francisco", date: "A minute ago", calender: "CalendarBlank.png", status: "Complete" },
@@ -25,17 +27,42 @@ const Orders = () => {
             "Approved": "status-approved",
             "Rejected": "status-rejected",
         };
-    
+
         return statusClasses[status] || "";
     };
-    
 
+    const handlePageChange = (page) => {
+        setCurrentPage(page);
+        console.log(`Navigated to page ${page}`);
+    };
 
     return (
         <div className="main-content">
-            <Header />
+            <div className="header-width" style={{ width: '1228px' }}>
+                <Header />
+            </div>
+
             <div className="table-container">
                 <h1 className="table-title">Order List</h1>
+                <div className="table-controls-container">
+                    <div className="icon-container">
+                        <img src="IconSet (12).png" alt="Icon 1" className="control-icon" />
+                        <img src="IconSet (13).png" alt="Icon 2" className="control-icon" />
+                        <img src="IconSet (14).png" alt="Icon 3" className="control-icon" />
+                    </div>
+                    <div className="search-container">
+                        <div className="search-wrapper">
+                            <img src="/IconSet.png" alt="Search" />
+                            <input
+                                type="text"
+                                placeholder="Search"
+                                className="search-input"
+                                aria-label="Search"
+                            />
+                        </div>
+                    </div>
+
+                </div>
                 <table className="orders-table">
                     <thead>
                         <tr>
@@ -78,6 +105,27 @@ const Orders = () => {
                         ))}
                     </tbody>
                 </table>
+                <div className="pagination-container">
+                    {[1, 2, 3, 4, 5].map((page) => (
+                        <button
+                            key={page}
+                            className={`pagination-btn ${currentPage === page ? "active-page" : ""
+                                }`}
+                            onClick={() => handlePageChange(page)}
+                        >
+                            {page}
+                        </button>
+                    ))}
+                    <button
+                        className="pagination-btn"
+                        onClick={() =>
+                            currentPage < 5 && handlePageChange(currentPage + 1)
+                        }
+                        disabled={currentPage === 5}
+                    >
+                        &gt;
+                    </button>
+                </div>
             </div>
         </div>
     );

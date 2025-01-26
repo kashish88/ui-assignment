@@ -7,6 +7,7 @@ import MainContent from "./MainContent";
 const Home = () => {
   return (
     <div className="home" >
+      
      <MainContent />
      <Notifications />
     </div>

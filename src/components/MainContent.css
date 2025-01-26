@@ -13,27 +13,61 @@
 .dashboard-cards {
     display: grid;
     grid-template-columns: repeat(2, 1fr) 2fr;
-    gap: 20px;
+    gap: 28px;
     margin: 20px;
     align-items: start;
 }
 
 .card {
+    position: relative;
     padding: 24px;
     background: #fff;
     border: 1px solid #eee;
     border-radius: 16px;
-    text-align: center;
-    font-size: 16px;
+    text-align: left;
+    font-size: 14px;
     color: #333;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: 'Inter', sans-serif; 
+    font-weight: 600;
 }
 
-.card span {
-    display: block;
+.card-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.card-details span:first-child {
     font-size: 24px;
     font-weight: bold;
-    margin-top: 8px;
+}
+
+.percentage {
+    font-size: 12px;
+    font-weight: 400;
+    margin-left: 10px;
+   
+}
+
+.card-customers {
+    background-color: rgba(227, 245, 255, 1); 
+}
+
+.card-orders {
+    background-color: rgba(247, 249, 251, 1); 
+}
+
+.card-revenue {
+    background-color: rgba(247, 249, 251, 1); 
+}
+
+.card-growth {
+    background-color: rgba(229, 236, 246, 1);
 }
 
 .projections-chart {
@@ -55,8 +89,10 @@
 .projections-title {
     text-align: left;
     font-size: 14px;
-    font-weight: bold;
+    font-weight: 600;
     margin-bottom: 10px;
+    font-family: 'Inter', sans-serif; 
+
 }
 
 .charts {
@@ -69,7 +105,7 @@
 .chart {
     background: #f4f4f4;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 16px;
 }
 
 .tables {
@@ -81,16 +117,17 @@
 
 .table {
     background: #f4f4f4;
-    padding: 20px;
-    border-radius: 8px;
+    padding: 24px;
+    border-radius: 16px;
 }
 
 .table-header {
     display: grid;
-    grid-template-columns: 3fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
     color: rgba(28, 28, 28, 0.4);
     border-bottom: 1px solid rgba(28, 28, 28, 0.4);
     padding: 10px 0;
+    font-size: 12px;
 }
 
 .table-header div {
@@ -100,7 +137,7 @@
 
 .table-row {
     display: grid;
-    grid-template-columns: 3fr 1fr 1fr 1fr; 
+    grid-template-columns: 2fr 1fr 1fr 1fr; 
     padding: 10px 0;
     align-items: center;
 }
@@ -110,6 +147,7 @@
     padding: 0 10px; 
     white-space: nowrap;
     overflow: hidden;
+    font-size: 12px;
 }
 
 .table-row .name {
@@ -130,4 +168,53 @@
 
 .revenue-item strong {
     margin-right: 5px;
+}
+.arrow-icon {
+    width: 16px;
+    height: 16px;
+   
+    vertical-align: middle;
+}
+
+.total-sales-chart {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 202px;
+}
+
+.recharts-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.recharts-legend-item {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    font-size: 12px;
+    color: #333;
+}
+
+.recharts-legend-item .recharts-legend-icon {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.chart-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.locations-chart{
+    width: 202px;
 }
