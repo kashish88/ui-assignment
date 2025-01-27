@@ -83,12 +83,6 @@
     line-height: 18px;
 }
 
-.orders-table th {
-
-
-    color: rgba(28, 28, 28, 0.4)
-}
-
 .orders-table tr:hover {
     background-color: #f4f4f4;
 }

@@ -1,8 +1,10 @@
 import React from "react";
 import "./Sidebar.css";
 import { Link } from "react-router-dom";
+import { useTheme } from "./ThemeContext";
 
 const Sidebar = () => {
+    const {isDarkMode} = useTheme();
   return (
     <div className="sidebar">
       <div className="sidebar-header">
@@ -22,9 +24,9 @@ const Sidebar = () => {
       <div className="sidebar-section">
         <p>Dashboards</p>
         <ul className="dashboards">
-          <li className="active">
+          <li className="active" style={{backgroundColor:isDarkMode?"rgba(255, 255, 255, 0.1)":"rgba(28, 28, 28, 0.05)"}}>
             <img
-              src="/ChartPieSlice.png"
+              src={isDarkMode?"/ChartPieSlice (1).png":"/ChartPieSlice.png"}
               alt="Default Icon"
               className="list-icon"
             />
@@ -33,7 +35,7 @@ const Sidebar = () => {
           <Link to="/" className="list-link">
           <li>
             <img
-              src="/ShoppingBagOpen.png"
+              src={isDarkMode?"/ShoppingBagOpen (1).png":"/ShoppingBagOpen.png"}
               alt="eCommerce Icon"
               className="list-icon"
             />
@@ -42,7 +44,7 @@ const Sidebar = () => {
           </Link>
           <li>
             <img
-              src="/FolderNotch.png"
+              src={isDarkMode?"/FolderNotch (1).png":"/FolderNotch.png"}
               alt="Projects Icon"
               className="list-icon"
             />
@@ -50,7 +52,7 @@ const Sidebar = () => {
           </li>
           <li>
             <img
-              src="/BookOpen.png"
+              src={isDarkMode?"/BookOpen (1).png":"/BookOpen.png"}
               alt="Online Courses Icon"
               className="list-icon"
             />
@@ -65,7 +67,7 @@ const Sidebar = () => {
             <span className="user">
               <span className="arrow down-arrow">&gt;</span>
               <img
-                src="/IdentificationBadge.png"
+                src={isDarkMode?"/IdentificationBadge (1).png":"/IdentificationBadge.png"}
                 alt="User Profile Icon"
                 className="list-icon"
               />
@@ -83,7 +85,7 @@ const Sidebar = () => {
             <span className="user">
               <span className="arrow"> &gt; </span>
               <img
-                src="/IdentificationCard.png"
+                src={isDarkMode?"/IdentificationCard (1).png":"/IdentificationCard.png"}
                 alt="Account Icon"
                 className="list-icon"
               />
@@ -94,7 +96,7 @@ const Sidebar = () => {
             <span className="user">
               <span className="arrow"> &gt; </span>
               <img
-                src="/UsersThree.png"
+                src={isDarkMode?"/UsersThree (1).png":"/UsersThree.png"}
                 alt="Corporate Icon"
                 className="list-icon"
               />
@@ -105,7 +107,7 @@ const Sidebar = () => {
             <span className="user">
               <span className="arrow"> &gt; </span>
               <img
-                src="/Notebook.png"
+                src={isDarkMode?"/Notebook (1).png":"/Notebook.png"}
                 alt="Blog Icon"
                 className="list-icon"
               />
@@ -116,7 +118,7 @@ const Sidebar = () => {
             <span className="user">
               <span className="arrow"> &gt; </span>
               <img
-                src="/ChatsTeardrop.png"
+                src={isDarkMode?"/ChatsTeardrop (1).png":"/ChatsTeardrop.png"}
                 alt="Social Icon"
                 className="list-icon"
               />

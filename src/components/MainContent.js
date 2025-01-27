@@ -12,6 +12,7 @@ import {
 } from "recharts";
 import StackedChart from './StackedChart';
 import { Link } from "react-router-dom";
+import { useTheme } from "./ThemeContext";
 
 
 
@@ -115,7 +116,7 @@ const CustomLegend = ({ payload }) => {
 };
 
 const MainContent = () => {
-
+const {isDarkMode} = useTheme();
     return (
         <div className="main-content">
             <Header />
@@ -132,19 +133,30 @@ const MainContent = () => {
                     </div>
                 </div>
                 <Link to="/orders" className="card-link">
-                <div className="card card-orders">
+                <div className="card" 
+                style={{
+                    backgroundColor:isDarkMode?"rgba(255, 255, 255, 0.05)":"rgba(247, 249, 251, 1)",
+                    border:isDarkMode?"1px solid rgba(255, 255, 255, 0.05)":"1px solid #eee",
+                    color:isDarkMode?"#fff":"#333"
+                    }}>
                     Orders
                     <div className="card-details">
                         <span>1,219</span>
-                        <span className="percentage negative">-0.33%  <img src="IconNegativeSet.png" alt="Up Arrow" className="arrow-icon" /></span>
+                        <span className="percentage negative">-0.33%  <img src={isDarkMode?"/ArrowFall.png":"IconNegativeSet.png"} alt="Up Arrow" className="arrow-icon" /></span>
                     </div>
                 </div>
                 </Link>
-                <div className="card card-revenue">
+                <div className="card"
+                style={{
+                    backgroundColor:isDarkMode?"rgba(255, 255, 255, 0.05)":"rgba(247, 249, 251, 1)",
+                    border:isDarkMode?"1px solid rgba(255, 255, 255, 0.05)":"1px solid #eee",
+                    color:isDarkMode?"#fff":"#333"
+                    }}
+                >
                     Revenue
                     <div className="card-details">
                         <span>$695</span>
-                        <span className="percentage positive">+15.03%  <img src="IconPositiveSet.png" alt="Up Arrow" className="arrow-icon" /></span>
+                        <span className="percentage positive">+15.03%  <img src={isDarkMode?"/ArrowRise.png":"IconPositiveSet.png"} alt="Up Arrow" className="arrow-icon" /></span>
                     </div>
                 </div>
                 <div className="card card-growth">
@@ -155,8 +167,10 @@ const MainContent = () => {
                     </div>
                 </div>
 
-                <div className="projections-chart">
-                    <div className="projections-title">
+                <div className="projections-chart"  style={{backgroundColor:isDarkMode?"rgba(255, 255, 255, 0.05)":"#f9fafb"}}>
+                    <div className="projections-title"
+                   
+                    >
                         Projections vs Actuals
                     </div>
                     <StackedChart />
@@ -166,7 +180,7 @@ const MainContent = () => {
                 </div>
             </div>
             <div className="charts">
-                <div className="chart revenue-chart">
+                <div className="chart revenue-chart"  style={{backgroundColor:isDarkMode?"rgba(255, 255, 255, 0.05)":"#f9fafb"}}>
                     <div className="projections-title">
                         Revenue
                     </div>
@@ -175,7 +189,7 @@ const MainContent = () => {
                             <CartesianGrid strokeDasharray="3 3" vertical={false} />
                             <XAxis dataKey="name" />
                             <YAxis
-                                ticks={[10, 20, 30]}
+                                ticks={[0,10, 20, 30]}
                                 domain={[0, 30]}
                                 axisLine={false}
                             />
@@ -184,7 +198,7 @@ const MainContent = () => {
                             <Line
                                 type="basis"
                                 dataKey="current_week_revenue"
-                                stroke="rgba(28, 28, 28, 1)"
+                                stroke={isDarkMode?"#4bc0c0":"rgba(28, 28, 28, 1)"}
                                 strokeDasharray="5 5"
                                 activeDot={{ r: 8 }}
                             />
@@ -197,7 +211,7 @@ const MainContent = () => {
                     </div>
 
                 </div>
-                <div className="chart location-chart">
+                <div className="chart location-chart" style={{backgroundColor:isDarkMode?"rgba(255, 255, 255, 0.05)":"#f9fafb"}}>
                     <div className="projections-title">
                         Revenue by Location
                     </div>
@@ -213,13 +227,13 @@ const MainContent = () => {
 
                             {revenueData.map((data, index) => (
                                 <Marker key={index} coordinates={[data.lng, data.lat]}>
-                                    <circle r={6} fill="red" />
+                                    <circle r={15} fill={isDarkMode?"red":"rgba(28, 28, 28, 1)"} />
 
                                 </Marker>
                             ))}
                         </ComposableMap>
                     </div>
-                    <ul className="location-revenue-list">
+                    <ul className="location-revenue-list" >
                         {revenueData.map((data, index) => {
                             const maxRevenue = Math.max(...revenueData.map(item => item.revenue)); 
                             const progress = Math.min((data.revenue / maxRevenue) * 100, 100);
@@ -242,12 +256,16 @@ const MainContent = () => {
                     </ul>
                 </div>
             </div>
-            <div className="tables">
-                <div className="table">
+            <div className="tables" >
+                <div className="table" style={{backgroundColor:isDarkMode?"rgba(255, 255, 255, 0.05)":"#f9fafb"}}>
                     <div className="projections-title">
                         Top Selling Products
                     </div>
-                    <div className="table-header">
+                    <div className="table-header" 
+                    style={{
+                        color:isDarkMode?"rgba(255, 255, 255, 0.4)":"rgba(28, 28, 28, 0.4)",
+                        borderBottom:isDarkMode?"1px solid rgba(255, 255, 255, 0.4) ":"1px solid rgba(28, 28, 28, 0.4)"
+                        }}>
                         <div>Name</div>
                         <div>Price</div>
                         <div>Quantity</div>
@@ -263,7 +281,7 @@ const MainContent = () => {
                         </div>
                     ))}
                 </div>
-                <div className="table total-sales-chart">
+                <div className="table total-sales-chart" style={{backgroundColor:isDarkMode?"rgba(255, 255, 255, 0.05)":"#f9fafb"}}>
                     <div className="total-sales-title">
                         Total Sales
                     </div>
