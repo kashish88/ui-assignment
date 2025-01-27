@@ -1,7 +1,9 @@
-# Deployed version of assignment - 
+# Deployed version of assignment - https://juspaysassignment.netlify.app/
 
 # For shifting to dark mode Please click on SUN icon in header
-# For accessing Order page screen kindly navigate to /orders route by typing in URL on browser
+# For accessing ORDER SCREEN kindly click on "Orders" Card on HOME SCREEN 
+# For navigating back to HOME SCREEN from ORDER SCREEN click on ecommerce icon in sidebar under Dashboards Section
+
 
 
 # Getting Started with Create React App
