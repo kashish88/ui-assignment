@@ -11,6 +11,7 @@ import {
     CartesianGrid,
 } from "recharts";
 import StackedChart from './StackedChart';
+import { Link } from "react-router-dom";
 
 
 
@@ -130,6 +131,7 @@ const MainContent = () => {
                         </span>
                     </div>
                 </div>
+                <Link to="/orders" className="card-link">
                 <div className="card card-orders">
                     Orders
                     <div className="card-details">
@@ -137,6 +139,7 @@ const MainContent = () => {
                         <span className="percentage negative">-0.33%  <img src="IconNegativeSet.png" alt="Up Arrow" className="arrow-icon" /></span>
                     </div>
                 </div>
+                </Link>
                 <div className="card card-revenue">
                     Revenue
                     <div className="card-details">

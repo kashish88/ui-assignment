@@ -261,3 +261,10 @@
     height: 100%;
     border-radius: 5px;
 }
+.card-link {
+    text-decoration: none; 
+    color: inherit;
+  }
+  .card-link:hover {
+    cursor: pointer;
+  }

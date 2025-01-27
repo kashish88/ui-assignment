@@ -1,5 +1,6 @@
 import React from "react";
 import "./Sidebar.css";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
@@ -29,6 +30,7 @@ const Sidebar = () => {
             />
             Default
           </li>
+          <Link to="/" className="list-link">
           <li>
             <img
               src="/ShoppingBagOpen.png"
@@ -37,6 +39,7 @@ const Sidebar = () => {
             />
             eCommerce
           </li>
+          </Link>
           <li>
             <img
               src="/FolderNotch.png"

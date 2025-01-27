@@ -95,3 +95,12 @@
 .sidebar .users{
 margin: -8px;
 }
+.list-link {
+  text-decoration: none; 
+  color: inherit; 
+  display: flex;
+  align-items: center;
+}
+.list-link:hover {
+  cursor: pointer;
+}
